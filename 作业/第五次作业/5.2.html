@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lv2</title>
+    
+</head>
+
+<body>
+    <div>
+        <b>请选择您的爱好</b>
+        <br />
+    </div>
+    <div id="divlist">
+        <input type="checkbox" name="item" value="内卷">内卷
+        <input type="checkbox" name="item" value="疯狂内卷">疯狂内卷
+        <input type="checkbox" name="item" value="拼命内卷">拼命内卷
+        <input type="checkbox" name="item" value="使劲内卷">使劲内卷
+        <br />
+        <input type="button" id="SelectAll"  value="全选">
+        <input type="button" id="SelectNotAll"  value="全不选">
+        <input type="button" id="Reverse" value="反选">
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+        const items = document.getElementsByName("item");
+        const SelectAll = document.getElementById("SelectAll");
+            SelectAll.onclick = function() {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = true;
+                    }
+               Reverse.checked = true;
+            }
+        const SelectNotAll = document.getElementById("SelectNotAll");
+            SelectNotAll.onclick = function() {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].checked = false;
+                    }
+              Reverse.checked = false;
+                }
+        const Reverse = document.getElementById("Reverse");
+            Reverse.onclick = function() {
+                    Reverse.checked = true;
+                    for (let i = 0; i < items.length; i++) {
+                        items[i].checked = !items[i].checked;
+                        if (!items[i].checked) {
+                       Reverse.checked = false;
+                        }
+                    }
+                }
+            for (var i = 0; i < items.length; i++) {
+                items[i].onclick = function() {
+                   Reverse.checked = true;
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].checked) {
+                            Reverse.checked = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
